@@ -1,5 +1,5 @@
 import './Card.css';
-import content from '../data/card-content.json';
+import content from '../../data/card-content.json';
 import {CardContent} from "./CardContent";
 import {CardButton} from "./CardButton";
 
