@@ -4,6 +4,8 @@ import './shared/styles/styles.scss';
 import {StateComponent} from "./components/state-block/StateComponent";
 import {Forms} from "./components/forms/Forms";
 import {RegistrationForm} from "./components/forms/RegistrationForm";
+import {LifeCycle} from "./components/lifecycle/LifeCycle";
+import {ErrorBoundary} from "./components/ErrorBoundary";
 function App() {
 
   return (
@@ -13,7 +15,10 @@ function App() {
         {/*    title='React JS'*/}
         {/*/>*/}
         {/*  <Forms />*/}
-          <RegistrationForm />
+        {/*  <RegistrationForm />*/}
+        <ErrorBoundary>
+          <LifeCycle />
+        </ErrorBoundary>
       </div>
   );
 }
