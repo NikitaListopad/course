@@ -51,6 +51,11 @@ export class RickMortyMain extends Component {
 
         try {
             const result = await findByName({name: search, gender: 'male'})
+            const {results} = result.data;
+
+            this.setState({
+                cards: results
+            })
             console.log(result)
         } catch (error) {
             this.setState({
