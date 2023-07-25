@@ -1,5 +1,5 @@
 import './App.css';
-import {Card} from "./components/css-block/Card";
+import {Card} from "./components/http-request/Card";
 import './shared/styles/styles.scss';
 import {StateComponent} from "./components/state-block/StateComponent";
 import {Forms} from "./components/forms/Forms";
@@ -10,6 +10,9 @@ import {RickMortyMain} from "./components/http-request/RickMortyMain";
 import {HooksLesson} from "./components/hooksLesson/HooksLesson";
 import {HooksLessonTwo} from "./components/hooksLesson/HooksLessonTwo";
 import {createContext, useState} from "react";
+import {Outlet, Route, Routes} from "react-router-dom";
+import {Main} from "./components/layout/Main";
+import {Homepage} from "./components/pages/Homepage";
 
 export const CustomContext = createContext(null);
 
@@ -39,7 +42,16 @@ function App() {
                     name: 'test'
                 }
             }}>
-                <HooksLessonTwo />
+
+                <Routes>
+
+                    <Route path='/' element={<Homepage />}>
+                        <Route path='cards' element={<HooksLessonTwo />}/>
+                        <Route path='cards/:cardId' element={<Card />}/>
+                    </Route>
+
+                    <Route path='*' element={<h1> NOT FOUND </h1>} />
+                </Routes>
             </CustomContext.Provider>
         </ErrorBoundary>
       </div>

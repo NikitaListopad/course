@@ -1,23 +1,16 @@
-import {Component} from "react";
 import './RickMortyMain';
+import {useEffect, useState} from "react";
+import {getPerson} from "../../services/rick-morty-services";
+import {useParams} from "react-router-dom";
 
-const mockItem = {
-    "id":145,
-    "name":"Glenn",
-    "status":"Alive",
-    "species":"Human",
-    "location":{"name":"Interdimensional Cable","url":"https://rickandmortyapi.com/api/location/6"},
-    "image":"https://rickandmortyapi.com/api/character/avatar/145.jpeg",
-    "episode":["https://rickandmortyapi.com/api/episode/8"],
-}
-export class Card extends Component {
+export const Card = ({item}) => {
 
-    static defaultProps = {
-        item: mockItem
-    }
-    render() {
+    const {name, image, episode, location, species} = item;
 
-        const {name, image, episode, location, species} = this.props.item;
+    const {cardId} = useParams();
+
+    console.log(cardId)
+
 
         return (
             <div className="http-card-container">
@@ -40,5 +33,4 @@ export class Card extends Component {
                 </div>
             </div>
         )
-    }
 }

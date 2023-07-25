@@ -3,6 +3,7 @@ import {findByName, getAllCards} from "../../services/rick-morty-services";
 import {Card} from "../http-request/Card";
 import {Button} from "../../elements/Button";
 import {useDebounce} from "../../hooks/useDebounce";
+import {Link, NavLink} from "react-router-dom";
 
 const cardModified = (cardsArray) => {
     // розкомітити наступний рядок, щоб імітувати важкі наватанаження на процессор
@@ -87,8 +88,12 @@ export const HooksLessonTwo = () => {
                     <Button refProp={ref} click={handleButton}/>
                 </div>
             <div className='cards-wrapper'>
-                { cardsArray.map(card => (<Card item={card} key={card.id}/>)) }
-                </div>
+                { cardsArray.map(card => (
+                    <Link to={`${card.id}`} key={card.id}>
+                        <Card item={card}/>
+                    </Link>
+                )) }
+            </div>
         </div>
     )
 };

@@ -1,0 +1,29 @@
+.main-container {
+    & .main-wrapper {
+        margin: 0 80px;
+    }
+
+    & header {
+        background: #3373ec;
+
+        & ul {
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            height: 60px;
+            align-items: center;
+
+            & li {
+                padding: 15px;
+                background: #B4BCCF;
+                border: 1px solid;
+                border-radius: 10px;
+            }
+        }
+
+        & li:not(:last-of-type) {
+            margin-right: 20px;
+        }
+    }
+}
