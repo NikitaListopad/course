@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {findByName, getAllCards} from "../../services/rick-morty-services";
 import {Card} from "../http-request/Card";
 import {Button} from "../../elements/Button";
@@ -72,6 +72,10 @@ export const HooksLessonTwo = () => {
         setSearchValue(e.target.value)
     }
 
+    const handleButton = useCallback((func) => {
+        func()
+    }, [items])
+
     if (isLoading) {
         return <h1>It is a fake spinner</h1>
     }
@@ -80,7 +84,7 @@ export const HooksLessonTwo = () => {
         <div className='http-requests-wrapper'>
                 <div>
                     <input value={searchValue} onChange={handleChange} />
-                    <Button refProp={ref}/>
+                    <Button refProp={ref} click={handleButton}/>
                 </div>
             <div className='cards-wrapper'>
                 { cardsArray.map(card => (<Card item={card} key={card.id}/>)) }
